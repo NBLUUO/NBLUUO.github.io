@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=yes">
+  <title>✨ 😋😋😋 ✨</title>
+  <style>
+    /* 全局重置，针对手机屏幕优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      /* 纯黑背景，让特效更突出 */
+      background: #0a0a0a;
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh; /* 动态视口高度，适应手机浏览器栏 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      /* 增加一些微妙的颗粒纹理背景，提升质感 */
+      position: relative;
+    }
+
+    /* 装饰性光晕背景，增加氛围 */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: 80vw;
+      max-width: 500px;
+      max-height: 500px;
+      background: radial-gradient(circle, rgba(138, 43, 226, 0.25) 0%, rgba(255, 20, 147, 0.1) 40%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+      animation: gentlePulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentlePulse {
+      0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    /* 主容器——文字居中区域 */
+    .container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 核心文字样式 + 特效 */
+    .magic-text {
+      font-size: clamp(3.5rem, 15vw, 6.5rem); /* 手机屏幕大，文字醒目，根据屏幕宽度自适应 */
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1.2;
+      
+      /* 多层渐变色彩：紫、粉、橙、蓝流动效果 */
+      background: linear-gradient(
+        135deg,
+        #ff6ec7 0%,
+        #c44dff 25%,
+        #ff9a4d 50%,
+        #4da6ff 75%,
+        #ff6ec7 100%
+      );
+      background-size: 300% 300%;
+      
+      /* 将背景裁剪到文字上 */
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      
+      /* 文字阴影发光特效 (多层霓虹光感) */
+      filter: drop-shadow(0 0 12px rgba(255, 110, 199, 0.7)) drop-shadow(0 0 25px rgba(196, 77, 255, 0.6)) drop-shadow(0 0 40px rgba(77, 166, 255, 0.5));
+      
+      /* 动画：背景移动 + 轻微浮动 */
+      animation: floatAndColor 5s ease-in-out infinite alternate, gradientShift 4s ease-in-out infinite;
+      
+      /* 提升文字可读性，同时保留透明背景 */
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15); /* 极细描边，增加立体感 */
+      text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+      
+      /* 用户选择体验 */
+      user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none; /* 让点击穿透，不影响背景交互 (但保留文字展示) */
+      
+      position: relative;
+      display: inline-block;
+    }
+
+    /* 浮动动画：轻微上下移动并旋转一点点，显得生动 */
+    @keyframes floatAndColor {
+      0% {
+        transform: translateY(0px) rotate(-0.5deg);
+        filter: drop-shadow(0 0 12px rgba(255, 110, 199, 0.7)) drop-shadow(0 0 25px rgba(196, 77, 255, 0.6)) drop-shadow(0 0 40px rgba(77, 166, 255, 0.5));
+      }
+      50% {
+        transform: translateY(-8px) rotate(0.5deg);
+        filter: drop-shadow(0 0 20px rgba(255, 154, 77, 0.9)) drop-shadow(0 0 35px rgba(255, 110, 199, 0.8)) drop-shadow(0 0 50px rgba(196, 77, 255, 0.7));
+      }
+      100% {
+        transform: translateY(2px) rotate(-0.3deg);
+        filter: drop-shadow(0 0 15px rgba(77, 166, 255, 0.8)) drop-shadow(0 0 30px rgba(255, 110, 199, 0.7)) drop-shadow(0 0 45px rgba(196, 77, 255, 0.6));
+      }
+    }
+
+    /* 背景渐变色移动 */
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* 装饰性小粒子/星星效果，围绕文字 (使用伪元素无法直接用于文字容器，所以额外添加span) */
+    .sparkle-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* 粒子特效：通过多个小圆点实现闪烁 */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ff9a4d, 0 0 30px #c44dff;
+      opacity: 0;
+      animation: sparkleFloat 3s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* 不同位置的粒子，延迟和大小略有不同 */
+    .sparkle:nth-child(1) { top: -15px; left: 10%; width: 6px; height: 6px; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 20%; right: -15px; width: 7px; height: 7px; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: -10px; left: 20%; width: 5px; height: 5px; animation-delay: 1.2s; }
+    .sparkle:nth-child(4) { bottom: 30%; left: -18px; width: 8px; height: 8px; animation-delay: 1.8s; }
+    .sparkle:nth-child(5) { top: 40%; right: -25px; width: 6px; height: 6px; animation-delay: 2.4s; }
+    .sparkle:nth-child(6) { top: -5px; right: 15%; width: 5px; height: 5px; animation-delay: 0.8s; }
+    .sparkle:nth-child(7) { bottom: 15%; right: 10%; width: 7px; height: 7px; animation-delay: 1.5s; }
+    .sparkle:nth-child(8) { top: 60%; left: -12px; width: 6px; height: 6px; animation-delay: 2.1s; }
+
+    @keyframes sparkleFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+      30% {
+        opacity: 1;
+        transform: translateY(-18px) scale(1.2);
+      }
+      70% {
+        opacity: 0.8;
+        transform: translateY(-8px) scale(0.9);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-25px) scale(0.3);
+      }
+    }
+
+    /* 适应极小屏幕或横屏，保持文字可见 */
+    @media (max-width: 400px) {
+      .magic-text {
+        font-size: 4rem;
+      }
+    }
+
+    /* 添加一个简单的副标题或装饰线 (可选，让页面更完整) */
+    .sub-note {
+      margin-top: 15px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeInNote 2s ease-out 0.8s forwards;
+      z-index: 10;
+      position: relative;
+    }
+
+    @keyframes fadeInNote {
+      to {
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 使用 sparkle-container 包裹文字，以便定位粒子特效 -->
+    <div class="sparkle-container">
+      <h1 class="magic-text" aria-label="你是Gay">你是Gay</h1>
+      
+      <!-- 装饰性粒子，围绕文字闪烁 -->
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+    </div>
+    <p class="sub-note">✦ 你是Gay ✦</p>
+  </div>
+
+  <!-- 附加说明：完全针对手机屏幕优化，文字巨大居中，特效包括渐变动画、霓虹发光、浮动效果以及粒子闪烁 -->
+</body>
+</html>
