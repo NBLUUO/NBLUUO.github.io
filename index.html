@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你为什么不睡觉？</title>
+<meta name="description" content="点一下，看看你为什么不睡觉。">
+<meta name="theme-color" content="#05060d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛈️</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 夜空 + 雨 -->
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div id="flash" aria-hidden="true"></div>
+  <div class="bolt" id="bolt" aria-hidden="true">
+    <svg viewBox="0 0 120 320" xmlns="http://www.w3.org/2000/svg">
+      <path d="M78 0 L26 168 L60 168 L38 320 L104 128 L64 128 Z"/>
+    </svg>
+  </div>
+
+  <main class="stage">
+    <section class="card" id="card">
+      <p class="hint" id="hint">夜已经深了</p>
+      <h1 class="question">你为什么不睡觉？</h1>
+
+      <button class="btn" id="btn" type="button">
+        <span id="btnText">点我</span>
+      </button>
+
+      <div class="answer" id="answer" aria-live="polite">
+        <p class="answer-text">原来你害怕打雷</p>
+      </div>
+    </section>
+
+    <p class="foot">🌧️ &nbsp;听，雨还在下…</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
